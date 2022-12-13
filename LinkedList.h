@@ -1,5 +1,9 @@
+#ifndef LINKED_LIST_H
+#define LINKED_LIST_H
+
 #include <string>
 #include <iostream>
+
 
 template <typename E>
 class SLinkedList{
@@ -12,17 +16,15 @@ class SLinkedList{
         void removeFront();
     
     private:
-        SNode<E>* head;
+        struct SNode
+        {
+            E elem;
+            SNode* next;
+        };
+
+        SNode* head;
 };
 
-
-template <typename E>
-class SNode {
-    private:
-        E elem;
-        SNode<E>* next;
-        friend class SLinkedClass<E>;
-};
 
 
 template <typename E>
@@ -40,12 +42,12 @@ const E& SLinkedList<E>::front()
 
 template <typename E>
 SLinkedList<E>::~SLinkedList()
-{ while (!empty()) removefront(); }
+{ while (!empty()) removeFront(); }
 
 template <typename E>
 void SLinkedList<E>::addFront(const E& e)
 {
-    SNode<E>* v = new SNode<E>;
+    SNode* v = new SNode;
     v->elem = e;
     v->next = head;
     head = v;
@@ -53,17 +55,10 @@ void SLinkedList<E>::addFront(const E& e)
 
 template <typename E>
 void SLinkedList<E>::removeFront()
-{   SNode<E>* old = head;
+{   SNode* old = head;
     head = old->next;
     delete old;
 }
 
 
-int main()
-{
-    SLinkedList<int> a;
-    a.addFront(3);
-
-    std::cout << a.front() << std::endl;
-    return 0;
-}
+#endif
