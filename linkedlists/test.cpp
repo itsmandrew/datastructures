@@ -4,8 +4,8 @@
 
 int main()
 {
-    SLinkedList<int> a;
-    a.addFront(3);
+    SLinkedList<std::string> a;
+    a.addFront("PENIS");
 
     std::cout << a.front() << std::endl;
     return 0;
