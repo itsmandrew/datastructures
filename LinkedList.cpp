@@ -2,14 +2,6 @@
 #include <iostream>
 
 template <typename E>
-class SNode {
-    private:
-        E elem;
-        SNode<E>* next;
-        friend class SLinkedClass<E>;
-};
-
-template <typename E>
 class SLinkedList{
     public:
         SLinkedList();
@@ -22,6 +14,16 @@ class SLinkedList{
     private:
         SNode<E>* head;
 };
+
+
+template <typename E>
+class SNode {
+    private:
+        E elem;
+        SNode<E>* next;
+        friend class SLinkedClass<E>;
+};
+
 
 template <typename E>
 SLinkedList<E>::SLinkedList()
